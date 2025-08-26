@@ -1,0 +1,30 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: requirements-txt-fixer
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.20.0
+    hooks:
+      - id: pyupgrade
+        args: ["--py312-plus"]
+  - repo: https://github.com/adamchainz/django-upgrade
+    rev: 1.25.0
+    hooks:
+      - id: django-upgrade
+        args: [--target-version, "5.1"]
+  - repo: https://github.com/pycqa/isort
+    rev: 6.0.1
+    hooks:
+      - id: isort
+        files: "\\.(py)$"
+        args: [ --settings-path=pyproject.toml ]
+  - repo: https://github.com/psf/black
+    rev: 25.1.0
+    hooks:
+      - id: black
+        args: [ --config=pyproject.toml ]
+        fail_fast: true
